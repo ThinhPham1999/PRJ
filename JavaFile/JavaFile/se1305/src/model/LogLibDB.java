@@ -65,12 +65,54 @@ public class LogLibDB {
     }
     //---------------------------------------------------------------------------------------   
 
-    public static Vector<Vector> viewLogByUser(String uid) {
-        return null;
+    public static Vector<LogLib> viewLogByUser(String uid) {
+        Vector<LogLib> result = new Vector<>();
+        try{
+            Class.forName(driverName);
+            Connection con = DriverManager.getConnection(dbURL, userDB, passDB);
+            Statement stmt = con.createStatement();
+            ResultSet re = stmt.executeQuery("Select UserID, BookID, NgayDat, NgayMuon, NgayPtra, NgayTra, MaNV, LogID where UserID='"+uid+"'");
+            while(re.next()){
+                String userid = re.getString(1);
+                String bookid = re.getString(2);
+                LocalDate ngayDat = re.getDate(3).toLocalDate();
+                LocalDate ngayMuon = re.getDate(4).toLocalDate();
+                LocalDate ngayPTra = re.getDate(5).toLocalDate();
+                LocalDate ngayTra = re.getDate(6).toLocalDate();
+                String maNV = re.getString(7);
+                int logid = re.getInt(8);
+                result.add(new LogLib(logid, ngayDat, ngayMuon, ngayPTra, ngayTra, maNV, userid, bookid));
+            }
+            con.close();
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+        return result;
     }
     //---------------------------------------------------------------------------------------   
 
     public static ArrayList<LogLib> getLogsByUser(String uid) {
-        return null;
+        ArrayList<LogLib> result = new ArrayList<>();
+        try{
+            Class.forName(driverName);
+            Connection con = DriverManager.getConnection(dbURL, userDB, passDB);
+            Statement stmt = con.createStatement();
+            ResultSet re = stmt.executeQuery("Select UserID, BookID, NgayDat, NgayMuon, NgayPtra, NgayTra, MaNV, LogID where UserID='"+uid+"'");
+            while(re.next()){
+                String userid = re.getString(1);
+                String bookid = re.getString(2);
+                LocalDate ngayDat = re.getDate(3).toLocalDate();
+                LocalDate ngayMuon = re.getDate(4).toLocalDate();
+                LocalDate ngayPTra = re.getDate(5).toLocalDate();
+                LocalDate ngayTra = re.getDate(6).toLocalDate();
+                String maNV = re.getString(7);
+                int logid = re.getInt(8);
+                result.add(new LogLib(logid, ngayDat, ngayMuon, ngayPTra, ngayTra, maNV, userid, bookid));
+            }
+            con.close();
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+        return result;
     }
 }

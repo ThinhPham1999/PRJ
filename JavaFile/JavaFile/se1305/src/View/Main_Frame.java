@@ -35,14 +35,14 @@ public class Main_Frame extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         MenuBar_Menu = new javax.swing.JMenuBar();
         jMenu3 = new javax.swing.JMenu();
-        MI_Menu = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        Menu_Login = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         MainPain.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
 
+        lb_logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/IconLogo.jpg"))); // NOI18N
         lb_logo.setText("jLabel1");
         MainPain.setTopComponent(lb_logo);
 
@@ -53,22 +53,13 @@ public class Main_Frame extends javax.swing.JFrame {
 
         jMenu3.setText("File");
 
-        MI_Menu.setText("Login");
-        MI_Menu.addActionListener(new java.awt.event.ActionListener() {
+        Menu_Login.setText("Login");
+        Menu_Login.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MI_MenuActionPerformed(evt);
+                Menu_LoginActionPerformed(evt);
             }
         });
-
-        jMenuItem1.setText("jMenuItem1");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
-            }
-        });
-        MI_Menu.add(jMenuItem1);
-
-        jMenu3.add(MI_Menu);
+        jMenu3.add(Menu_Login);
 
         MenuBar_Menu.add(jMenu3);
 
@@ -80,15 +71,11 @@ public class Main_Frame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void MI_MenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MI_MenuActionPerformed
-        
-    }//GEN-LAST:event_MI_MenuActionPerformed
-
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void Menu_LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Menu_LoginActionPerformed
         Login_Panel ip = new Login_Panel();
         MainPain.setBottomComponent(ip);
         pack();
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_Menu_LoginActionPerformed
 
     /**
      * @param args the command line arguments
@@ -126,12 +113,11 @@ public class Main_Frame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu MI_Menu;
     private javax.swing.JSplitPane MainPain;
     private javax.swing.JMenuBar MenuBar_Menu;
+    private javax.swing.JMenuItem Menu_Login;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lb_logo;
     // End of variables declaration//GEN-END:variables

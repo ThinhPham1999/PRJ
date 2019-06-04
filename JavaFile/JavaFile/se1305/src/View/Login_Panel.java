@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package View;
-
+import model.*;
 /**
  *
  * @author Thinh
@@ -27,69 +27,93 @@ public class Login_Panel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jPanel2 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        lb_Login = new javax.swing.JLabel();
+        p_MainLogin = new javax.swing.JPanel();
+        lb_Username = new javax.swing.JLabel();
+        txt_Username = new javax.swing.JTextField();
+        lb_Password = new javax.swing.JLabel();
+        txt_Password = new javax.swing.JTextField();
+        p_BottomLogin = new javax.swing.JPanel();
+        bt_Login = new javax.swing.JButton();
+        bt_Exit = new javax.swing.JButton();
 
         setLayout(new java.awt.BorderLayout());
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Login");
-        jLabel1.setToolTipText("");
-        add(jLabel1, java.awt.BorderLayout.PAGE_START);
+        lb_Login.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
+        lb_Login.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lb_Login.setText("Login");
+        lb_Login.setToolTipText("");
+        add(lb_Login, java.awt.BorderLayout.PAGE_START);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
-        jPanel1.setLayout(new java.awt.GridLayout(2, 2, 0, 1));
+        p_MainLogin.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        p_MainLogin.setLayout(new java.awt.GridLayout(2, 2, 0, 1));
 
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel2.setText("Username");
-        jLabel2.setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 20, 20, 20));
-        jPanel1.add(jLabel2);
+        lb_Username.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lb_Username.setText("Username");
+        lb_Username.setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 20, 20, 20));
+        p_MainLogin.add(lb_Username);
 
-        jTextField1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jTextField1);
+        txt_Username.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        txt_Username.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_UsernameKeyReleased(evt);
+            }
+        });
+        p_MainLogin.add(txt_Username);
 
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel3.setText("Password");
-        jLabel3.setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 20, 20, 20));
-        jPanel1.add(jLabel3);
+        lb_Password.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lb_Password.setText("Password");
+        lb_Password.setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 20, 20, 20));
+        p_MainLogin.add(lb_Password);
 
-        jTextField2.setToolTipText("");
-        jTextField2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jTextField2);
+        txt_Password.setToolTipText("");
+        txt_Password.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        p_MainLogin.add(txt_Password);
 
-        add(jPanel1, java.awt.BorderLayout.CENTER);
+        add(p_MainLogin, java.awt.BorderLayout.CENTER);
 
-        jButton1.setText("Login");
-        jButton1.setActionCommand("");
-        jButton1.setAlignmentY(1.0F);
-        jPanel2.add(jButton1);
+        bt_Login.setText("Login");
+        bt_Login.setActionCommand("");
+        bt_Login.setAlignmentY(1.0F);
+        bt_Login.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_LoginActionPerformed(evt);
+            }
+        });
+        p_BottomLogin.add(bt_Login);
 
-        jButton2.setText("Exit");
-        jButton2.setActionCommand("");
-        jButton2.setAlignmentY(1.0F);
-        jPanel2.add(jButton2);
+        bt_Exit.setText("Exit");
+        bt_Exit.setActionCommand("");
+        bt_Exit.setAlignmentY(1.0F);
+        p_BottomLogin.add(bt_Exit);
 
-        add(jPanel2, java.awt.BorderLayout.PAGE_END);
+        add(p_BottomLogin, java.awt.BorderLayout.PAGE_END);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txt_UsernameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_UsernameKeyReleased
+        String username;
+        username = txt_Username.getText();
+        if ((username.length() != 5) || (username.charAt(0) != 'U')){
+           
+        }
+    }//GEN-LAST:event_txt_UsernameKeyReleased
+
+    private void bt_LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_LoginActionPerformed
+        String userName = txt_Username.getText();
+        String password = txt_Password.getText();
+        
+    }//GEN-LAST:event_bt_LoginActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JButton bt_Exit;
+    private javax.swing.JButton bt_Login;
+    private javax.swing.JLabel lb_Login;
+    private javax.swing.JLabel lb_Password;
+    private javax.swing.JLabel lb_Username;
+    private javax.swing.JPanel p_BottomLogin;
+    private javax.swing.JPanel p_MainLogin;
+    private javax.swing.JTextField txt_Password;
+    private javax.swing.JTextField txt_Username;
     // End of variables declaration//GEN-END:variables
 }

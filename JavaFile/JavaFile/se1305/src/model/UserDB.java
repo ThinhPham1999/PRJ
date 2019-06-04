@@ -50,10 +50,14 @@ public class UserDB implements DatabaseInfo {
     public static User getUser(String uid){
         User s=null;
         try {
-            Class.forName(driverName);// Step 1: Load driver
+            // Step 1: Load driver
+            Class.forName(driverName);
             Connection con = DriverManager.getConnection(dbURL,userDB,passDB);
-            Statement stmt= con.createStatement(); // Step 3: Create Statment
-            ResultSet rs=stmt.executeQuery("Select fullName,email,password,status,userright from Users where userID='"+uid+"'"); // Step 4: Execute Stament 
+            // Step 3: Create Statment
+            Statement stmt= con.createStatement(); 
+            // Step 4: Execute Stament 
+            ResultSet rs=stmt.executeQuery("Select fullName,email,password,status,userright from Users where userID='"+uid+"'"); 
+            // Step 5: Process Result
             if(rs.next()){
                 String fullName=rs.getString(1); // == fullName
                 String email=rs.getString(2);  // == email
@@ -62,8 +66,9 @@ public class UserDB implements DatabaseInfo {
                 int userRight=rs.getInt(5); // == userright
                 String userID=uid;
                 s=new User(userID, fullName, email, password, status, userRight);
-            }// Step 5: Process Result
-            con.close(); // Step 6: Close connection
+            }
+             // Step 6: Close connection
+            con.close();
             return s;
         } catch (Exception ex) {// Throws Exception Sql 
             Logger.getLogger(UserDB.class.getName()).log(Level.SEVERE, null, ex);

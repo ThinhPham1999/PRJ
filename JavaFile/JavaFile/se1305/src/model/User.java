@@ -88,7 +88,7 @@ public class User {
 //------------------------------------------------------------------
     public static User login(String uid, String pw){
         User s= new User(uid);
-        if(s.password.equals(pw)) return s;
+        if(s.password.equals(pw) && uid.equals(uid)) return s;
         return null;
     }    
 //------------------------------------------------------------------ 
