@@ -1,7 +1,8 @@
 
 package model;
 
-import java.time.LocalDate;
+import java.sql.Date;
+import java.time.LocalDateTime;
 import java.util.Calendar;
 
 public class User {
@@ -87,8 +88,11 @@ public class User {
     }
 //------------------------------------------------------------------
     public static User login(String uid, String pw){
-        User s= new User(uid);
-        if(s.password.equals(pw) && uid.equals(uid)) return s;
+        User s= UserDB.getUser(uid);
+        if (s == null){
+            return null;
+        }
+        if(s.getPassword().equals(pw)) return s;
         return null;
     }    
 //------------------------------------------------------------------ 
@@ -111,7 +115,7 @@ public class User {
         return UserDB.updateUser(this);
     }
 //------------------------------------------------------------------    
-    public LocalDate renewBook(String logid){
+    public LocalDateTime renewBook(String logid){
         return null;
     }
 //------------------------------------------------------------------    
@@ -125,8 +129,8 @@ public class User {
 //------------------------------------------------------------------    
     public void borrowBook(int logID, String maNV){
         LogLib log = LogLibDB.getLog(logID);
-        log.setNgayMuon(LocalDate.now());
-        log.setNgayPTra(LocalDate.now().plusDays(30));
+        log.setNgayMuon(LocalDateTime.now());
+        log.setNgayPTra(LocalDateTime.now().plusDays(30));
         log.setMaNV(maNV);
         LogLibDB.updateLog(log);
     }
@@ -134,13 +138,15 @@ public class User {
     public void renewBook(int logID){
         LogLib log = LogLibDB.getLog(logID);
         Calendar c = Calendar.getInstance();
-        log.setNgayPTra(log.getNgayPTra().plusDays(15));
+        log.setNgayPTra(log.getNgayPTra());
     }
     
-    public Book returnBook(int logID){
+    public void returnBook(int logID){
         LogLib log = LogLibDB.getLog(logID);
-        Book book = BookDB.getBook(log.getBookID());
-        return book;
+        log.setNgayTra(LocalDateTime.now());
+        LogLibDB.updateLog(log);
+        //Book book = BookDB.getBook(log.getBookID());
+        //return book;
     }
     
     public void viewLog(){

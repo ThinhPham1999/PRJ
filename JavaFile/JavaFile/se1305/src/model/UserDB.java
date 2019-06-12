@@ -5,7 +5,6 @@ import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
 public class UserDB implements DatabaseInfo {
  //-------------------------------------------------------------------------------
     public static boolean updateUser(User s){
@@ -65,7 +64,7 @@ public class UserDB implements DatabaseInfo {
                 String status=rs.getString(4); // == status
                 int userRight=rs.getInt(5); // == userright
                 String userID=uid;
-                s=new User(userID, fullName, email, password, status, userRight);
+                s = new User(userID, fullName, email, password, status, userRight);
             }
              // Step 6: Close connection
             con.close();
@@ -80,7 +79,7 @@ public class UserDB implements DatabaseInfo {
         try{
             Class.forName(driverName);
             Connection con = DriverManager.getConnection(dbURL, userDB, passDB);
-            PreparedStatement stmt = con.prepareStatement("INSEST INTO User VALUES(?, ?, ?, ?, ?, ?)");
+            PreparedStatement stmt = con.prepareStatement("INSERT INTO Users VALUES(?, ?, ?, ?, ?, ?)");
             stmt.setString(1, userid);
             stmt.setString(2, fName);
             stmt.setString(3, email);

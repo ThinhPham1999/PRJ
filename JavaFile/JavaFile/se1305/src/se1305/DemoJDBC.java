@@ -2,22 +2,17 @@
 package se1305;
 
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import model.*;
+import java.util.ArrayList;
 
 public class DemoJDBC {
     public static void main(String[] a){
-//        User updateuser = new User("U0001", "Van", "a@c.d", "012345", "BT", 1);
-//        UserDB.updateUser(updateuser);
-//        UserDB.doBookOrder("U0001", "B0001");
-        ArrayList<Book> listBook = BookDB.searchByCategory("Lập trình");
-        for (Book book : listBook){
-            System.out.println(book);
-        }
-         
+        demo();
     }
     
     public static void demo(){
