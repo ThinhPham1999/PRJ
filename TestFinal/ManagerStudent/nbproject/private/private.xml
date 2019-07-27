@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/F:/fpt/Summer%202019/PRJ/TestFinal/ManagerStudent/src/managerstudent/ManagerStudent.java</file>
+            <file>file:/F:/fpt/Summer%202019/PRJ/TestFinal/ManagerStudent/src/model/DatabaseInfo.java</file>
+            <file>file:/F:/fpt/Summer%202019/PRJ/TestFinal/ManagerStudent/src/View/ViewStudent.java</file>
+            <file>file:/F:/fpt/Summer%202019/PRJ/TestFinal/ManagerStudent/src/rmi/StudentManagerInterface.java</file>
+            <file>file:/F:/fpt/Summer%202019/PRJ/TestFinal/ManagerStudent/src/View/P_AddNewStudent.java</file>
+            <file>file:/F:/fpt/Summer%202019/PRJ/TestFinal/ManagerStudent/src/rmi/StudentImp.java</file>
+            <file>file:/F:/fpt/Summer%202019/PRJ/TestFinal/ManagerStudent/src/rmi/StudentServer.java</file>
+            <file>file:/F:/fpt/Summer%202019/PRJ/TestFinal/ManagerStudent/src/View/MainFrame.java</file>
+            <file>file:/F:/fpt/Summer%202019/PRJ/TestFinal/ManagerStudent/src/model/Student.java</file>
+            <file>file:/F:/fpt/Summer%202019/PRJ/TestFinal/ManagerStudent/src/model/StudentDB.java</file>
+        </group>
+    </open-files>
+</project-private>
