@@ -8,7 +8,6 @@ package rmi;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
-import model.Student;
 
 /**
  *
@@ -16,5 +15,5 @@ import model.Student;
  */
 public interface StudentManagerInterface extends Remote{
     public ArrayList<Student> getAllStudent() throws RemoteException;
-    public Student addStudent(Student st) throws RemoteException;
+    public String addStudent(Student st) throws RemoteException;
 }

@@ -3,47 +3,51 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package View;
+package rmi;
 
+import View.*;
+import java.rmi.AccessException;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author Thinh
  */
-public class MainFrame extends javax.swing.JFrame{
+public class StudentManagerClient extends javax.swing.JFrame{
 
     /**
-     * Creates new form MainFrame
+     * Creates new form StudentManagerClient
      */
     Thread thread;
 
-    public MainFrame() {
+    public StudentManagerClient() throws RemoteException {
         initComponents();
-        ViewStudent home = new ViewStudent();
+        Registry registry = LocateRegistry.getRegistry("localhost", 1088);
+        try { 
+            StudentManagerInterface chat = (StudentManagerInterface) registry.lookup("StudentManager");
+        } catch (NotBoundException ex) {
+            Logger.getLogger(StudentManagerClient.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (AccessException ex) {
+            Logger.getLogger(StudentManagerClient.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        P_ViewStudent home = new P_ViewStudent();
         this.getContentPane().add(home);
         thread = new Thread(new Runnable() {
-
             @Override
             public void run() {
                 for (int i = 100; i >= 0; i--) {
                     try {
                         Thread.sleep(1000);
-                        lb_title.setText("Time : " + i);
-                        if (i == 90) {
-                            int dialogButton = JOptionPane.YES_NO_OPTION;
-                            int dialogResult = JOptionPane.showConfirmDialog(null, "Do you want to continue ? ", "Title on Box", dialogButton);
-                            if (dialogResult == 0) {
-                                i = 100;
-
-                            } else {
-                                System.exit(0);
-
-                            }
-                        }
                     } catch (InterruptedException ex) {
-
+                        Logger.getLogger(StudentManagerClient.class.getName()).log(Level.SEVERE, null, ex);
                     }
+                    lb_title.setText("Student Manager " + i);
                 }
             }
         });
@@ -51,12 +55,32 @@ public class MainFrame extends javax.swing.JFrame{
         this.pack();
     }
     
-    public void setlb(){
-        for (int i = 100; i <= 0; i--){
-                    //lb_title.setText("Manage Student " + i);
-                    System.out.println(i);
-                } 
+    private void execute() {
+        //setLocationRelativeTo(null);            // to visible the GUI in the middle of the screen
+        Thread t1 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (true) {
+                    try {
+                        refresh();                  // this thread is used to refresh the Manager window by every second 
+                    } catch (RemoteException ex) {
+                        Logger.getLogger(StudentManagerClient.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    try {                       
+                        Thread.sleep(1000);
+                    } catch (InterruptedException ex) {
+                        System.err.println("Error");
+                    }
+                }
+            }
+        });
+        t1.start();
     }
+    
+    public void refresh() throws RemoteException {
+        
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -99,14 +123,17 @@ public class MainFrame extends javax.swing.JFrame{
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(StudentManagerClient.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(StudentManagerClient.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(StudentManagerClient.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(StudentManagerClient.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
@@ -114,7 +141,12 @@ public class MainFrame extends javax.swing.JFrame{
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {      
-                MainFrame a = new MainFrame();
+                StudentManagerClient a = null;
+                try {
+                    a = new StudentManagerClient();
+                } catch (RemoteException ex) {
+                    Logger.getLogger(StudentManagerClient.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 a.setVisible(true);                
             }
         });
